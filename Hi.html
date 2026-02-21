@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Двигающаяся форма</title>
+<style>
+body {
+  margin: 0;
+  padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #0a0f3d; /* черносиний фон */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+}
+
+form {
+  background: rgba(30, 30, 40, 0.95);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  width: 300px;
+  transform: translateY(-10px);
+  animation: floatForm 5s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes floatForm {
+  0%,100% { transform: translateY(-10px); }
+  50% { transform: translateY(-13px); }
+}
+
+/* Заголовки формы */
+.box {
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  display: inline-block;
+  animation: floatLetters 3s ease-in-out infinite alternate;
+}
+
+/* Анимация движения букв */
+@keyframes floatLetters {
+  0% { transform: translateX(0px) translateY(0px); }
+  25% { transform: translateX(1px) translateY(-1px); }
+  50% { transform: translateX(-1px) translateY(1px); }
+  75% { transform: translateX(1px) translateY(1px); }
+  100% { transform: translateX(0px) translateY(0px); }
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 15px; /* круглые края */
+  border: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  appearance: none;
+  background: #000; /* чёрный квадрат */
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+  animation: floatInput 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatInput {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(1px); }
+}
+
+input:focus {
+  box-shadow: 0 0 12px rgba(255,255,255,0.2);
+}
+
+input:not(:focus)::placeholder {
+  opacity: 0.6;
+  color: #aaa;
+  transition: opacity 0.3s ease;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Блок информации */
+.info {
+  max-width: 300px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #ccc;
+  background: rgba(20, 20, 40, 0.7);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  animation: floatInfo 5s ease-in-out infinite, floatLetters 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatInfo {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+</style>
+</head>
+<body>
+<form>
+  <div class="box">Введите имя:</div>
+  <input type="text" placeholder="Write your name">
+
+  <div class="box">Введите фамилию:</div>
+  <input type="text" placeholder="Write your surname">
+
+  <div class="box">Введите возраст:</div>
+  <input type="number" placeholder="Write your age">
+</form>
+
+<div class="info">
+  Добро пожаловать! Здесь можно создавать формы с красивыми эффектами и наслаждаться плавными анимациями. Всё работает на чистом HTML и CSS.
+</div>
+</body>
+</html>
